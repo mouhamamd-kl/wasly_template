@@ -2,41 +2,46 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Primary Colors
-  static const Color primaryLighter = Color(0xFFF5DFF9);
-  static const Color primaryLight = Color(0xFFD7CCEB);
-  static const Color primaryBase = Color(0xFF784CDF);
-  static const Color primaryDark = Color(0xFF5927AD);
-  static const Color primaryDarker = Color(0xFF482498);
+  static const Color primaryLighter = Color.fromRGBO(229, 219, 249, 1);
+  static const Color primaryLight = Color.fromRGBO(215, 204, 235, 1);
+  static const Color primaryBase = Color.fromRGBO(123, 76, 223, 1);
+
+  static const Color primaryDark = Color.fromRGBO(82, 39, 173, 1);
+  static const Color primaryDarker = Color.fromRGBO(73, 36, 152, 1);
 
   // Text Primary Colors
-  static const Color textPrimaryLight = Color(0xFFCADEFF);
-  static const Color textPrimaryBase = Color(0xFF071731);
-  static const Color textPrimaryDark = Color(0xFF01060E);
+  static const Color textPrimaryLight = Color.fromRGBO(202, 222, 255, 1);
+  static const Color textPrimaryBase = Color.fromRGBO(7, 23, 49, 1);
+  static const Color textPrimaryDark = Color.fromRGBO(1, 6, 14, 1);
 
   // Text Secondary Colors
-  static const Color textSecondaryLight = Color(0xFFF0EAFF);
-  static const Color textSecondaryBase = Color(0xFF8C89D4);
-  static const Color textSecondaryDark = Color(0xFF1E1B24);
+  static const Color textSecondaryLight = Color.fromRGBO(240, 234, 255, 1);
+  static const Color textSecondaryBase = Color.fromRGBO(140, 137, 148, 1);
+  static const Color textSecondaryDark = Color.fromRGBO(30, 27, 36, 1);
 
   // Success Colors
-  static const Color successLight = Color(0xFFD1FFD9);
-  static const Color successBase = Color(0xFF20EC38);
-  static const Color successDark = Color(0xFF0B8420);
+  static const Color successLight = Color.fromRGBO(209, 255, 217, 1);
+  static const Color successBase = Color.fromRGBO(32, 188, 59, 1);
+  static const Color successDark = Color.fromRGBO(11, 132, 32, 1);
 
   // Error Colors
-  static const Color errorLight = Color(0xFFFCE1E1);
-  static const Color errorBase = Color(0xFFB90000);
-  static const Color errorDark = Color(0xFFAA1111);
+  static const Color errorLight = Color.fromRGBO(255, 225, 225, 1);
+  static const Color errorBase = Color.fromRGBO(249, 0, 0, 1);
+  static const Color errorDark = Color.fromRGBO(170, 17, 17, 1);
 
   // Other Colors
 // Updated names for Other Colors
   static const Color backgroundLight =
-      Color(0xFFF5F2FB); // Light background shade
-  static const Color backgroundAccent = Color(0xFFBFAFDC); // Background accent
+      Color.fromRGBO(245, 242, 251, 1); // Light background shade
+  static const Color backgroundAccent =
+      Color.fromRGBO(248, 250, 252, 1); // Background accent
   static const Color backgroundDark =
-      Color(0xFF413D48); // Dark background accent
+      Color.fromRGBO(65, 61, 72, 1); // Dark background accent
 
-  static const Color surfaceDark = Color(0xFF252938); // Surface dark
-  static const Color surfaceDarker = Color(0xFF0B0B0C); // Surface darker
-  static const Color surfaceLight = Color(0xFFFFFFFF); // Surface light
+  static const Color surfaceDark =
+      Color.fromRGBO(37, 35, 40, 1); // Surface dark
+  static const Color surfaceDarker =
+      Color.fromRGBO(11, 11, 12, 1); // Surface darker
+  static const Color surfaceLight =
+      Color.fromRGBO(255, 255, 255, 1); // Surface light
 }
