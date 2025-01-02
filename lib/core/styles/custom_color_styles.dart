@@ -44,4 +44,5 @@ class AppColors {
       Color.fromRGBO(11, 11, 12, 1); // Surface darker
   static const Color surfaceLight =
       Color.fromRGBO(255, 255, 255, 1); // Surface light
+  static const Color strokColor = Color.fromRGBO(245, 242, 251, 1);
 }
