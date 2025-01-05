@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:wasly_template/core/widgets/text/text_button_4.dart';
 import 'package:wasly_template/wasly_template.dart';
 
 class CustomTextButtonActive extends StatelessWidget {
   final String text;
-  final VoidCallback onClick;
+  final VoidCallback? onClick;
   final double radius;
-
+  final EdgeInsetsGeometry? padding;
   const CustomTextButtonActive({
     Key? key,
     required this.text,
     required this.onClick,
     this.radius = 20.0,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -22,6 +22,7 @@ class CustomTextButtonActive extends StatelessWidget {
       radius: radius,
       color: AppColors.primaryBase,
       textColor: AppColors.backgroundLight,
+      padding: padding,
     );
   }
 }

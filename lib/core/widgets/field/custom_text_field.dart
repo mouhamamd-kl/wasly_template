@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wasly_template/core/widgets/field/inputBorder/custom_outline_input_border.dart';
+import 'package:wasly_template/core/widgets/Border/custom_outline_input_border.dart';
 import 'package:wasly_template/core/widgets/field/textStyle/custom_text_field_style.dart';
 import 'package:wasly_template/helpers/app_constants.dart';
 
@@ -11,6 +12,7 @@ class CustomTextField extends StatefulWidget {
   final String? defaultIcon;
   final String? focusedIcon;
   final BorderRadius? border;
+  final TextEditingController? controller;
   const CustomTextField({
     Key? key,
     this.onChanged,
@@ -18,6 +20,7 @@ class CustomTextField extends StatefulWidget {
     required this.hintText,
     required this.defaultIcon,
     required this.focusedIcon,
+    this.controller,
     this.border,
   }) : super(key: key);
 
@@ -45,6 +48,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       onTapOutside: (event) {
         FocusScope.of(context).unfocus();
       },

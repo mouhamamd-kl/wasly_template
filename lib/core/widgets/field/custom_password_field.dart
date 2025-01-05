@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wasly_template/core/widgets/field/inputBorder/custom_outline_input_border.dart';
+import 'package:wasly_template/core/widgets/Border/custom_outline_input_border.dart';
 import 'package:wasly_template/core/widgets/field/textStyle/custom_text_field_style.dart';
 import 'package:wasly_template/wasly_template.dart';
 
@@ -9,13 +9,17 @@ class CustomPasswordField extends StatefulWidget {
   final FormFieldSetter<String>? onSaved;
   final String hintText;
   final BorderRadius? border;
-  const CustomPasswordField(
-      {Key? key,
-      this.onChanged,
-      this.onSaved,
-      this.hintText = "Enter your password",
-      this.border})
-      : super(key: key);
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
+  const CustomPasswordField({
+    Key? key,
+    this.onChanged,
+    this.onSaved,
+    this.hintText = "Enter your password",
+    this.border,
+    required this.controller,
+    required this.validator,
+  }) : super(key: key);
 
   @override
   _CustomPasswordFieldState createState() => _CustomPasswordFieldState();
@@ -42,6 +46,8 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
+      controller: widget.controller,
       onTapOutside: (event) {
         FocusScope.of(context).unfocus();
       },
