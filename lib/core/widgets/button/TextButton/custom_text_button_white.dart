@@ -6,12 +6,13 @@ class CustomTextButtonWhite extends StatelessWidget {
   final String text;
   final VoidCallback onClick;
   final double radius;
-
+  final EdgeInsetsGeometry? padding;
   const CustomTextButtonWhite({
     Key? key,
     required this.text,
     required this.onClick,
     this.radius = 20.0,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -21,6 +22,7 @@ class CustomTextButtonWhite extends StatelessWidget {
       onClick: onClick,
       radius: radius,
       color: AppColors.backgroundLight,
+      padding: padding,
     );
   }
 }

@@ -122,7 +122,13 @@ class CustomTextStyles {
     height: 1.83, // 22px height divided by 12px font size
     letterSpacing: 0.0,
   );
-
+  static const TextStyle paragraph6 = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 10,
+    fontWeight: FontWeight.w400, // Regular
+    height: 1.83, // 22px height divided by 12px font size
+    letterSpacing: 0.0,
+  );
   // Button text styles
   static const TextStyle buttonText1 = TextStyle(
     fontFamily: 'Poppins',
