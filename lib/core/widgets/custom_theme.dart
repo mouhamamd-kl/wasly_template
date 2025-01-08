@@ -4,6 +4,8 @@ import 'package:wasly_template/core/styles/custom_text_styles.dart';
 class CustomTheme {
   static ThemeData get theme {
     return ThemeData(
+      scaffoldBackgroundColor: Colors.white,
+
       fontFamily: 'Poppins', // Global font
       textTheme: TextTheme(
         // Heading styles

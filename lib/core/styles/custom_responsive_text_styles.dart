@@ -50,6 +50,10 @@ class CustomResponsiveTextStyles {
   static TextStyle paragraph5 =
       getResponsiveFont(Get.context!, style: CustomTextStyles.paragraph5);
 
+  static TextStyle paragraph6 =
+      getResponsiveFont(Get.context!, style: CustomTextStyles.paragraph6);
+  static TextStyle paragraph7 =
+      getResponsiveFont(Get.context!, style: CustomTextStyles.paragraph7);
   // Button text styles
   static TextStyle buttonText1 =
       getResponsiveFont(Get.context!, style: CustomTextStyles.buttonText1);
