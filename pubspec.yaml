@@ -8,9 +8,11 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  animated_size_and_fade: ^5.0.3
   dropdown_button2: ^2.3.9
   flutter:
     sdk: flutter
+  flutter_pannable_rating_bar: ^2.7.2+1
   flutter_svg: ^2.0.16
   get: ^4.6.6
   google_maps_flutter: ^2.10.0
@@ -43,6 +45,15 @@ flutter:
     - assets/images/icons/bottomNavigationBar/store/
     - assets/images/icons/drawer/
     - assets/images/mockup/
+    - assets/images/icons/sort/
+    - assets/images/icons/textField/
+    - assets/images/icons/locationLabel/
+    - assets/images/icons/favourite/
+    - assets/images/icons/locationCard/
+    - assets/images/icons/paymentCard/
+    - assets/images/icons/textScreens/
+
+
     # - assets/images/customer/onBoarding/
     # - assets/images/store/onBoarding/
     # - images/a_dot_ham.jpeg

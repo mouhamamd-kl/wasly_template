@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wasly_template/core/widgets/card/ratingContainer.dart';
+import 'package:wasly_template/core/widgets/rating/ratingContainer.dart';
 import 'package:wasly_template/wasly_template.dart';
 
 class ProductCardContainer extends StatelessWidget {
@@ -51,6 +51,7 @@ class ProductCardContainer extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 6, vertical: 8),
                   alignment: Alignment.topLeft,
                   child: RatingcontainerLight(
+                    padding: EdgeInsets.all(8.0),
                     rate: rate,
                     numberOfRating: numberOfRating,
                   ),
@@ -81,8 +82,8 @@ class ProductCardContainer extends StatelessWidget {
               ),
               Text(
                 "Free Delivery",
-                style: CustomResponsiveTextStyles.paragraph4
-                    .copyWith(color: AppColors.textPrimaryBase),
+                style: CustomResponsiveTextStyles.paragraph2
+                    .copyWith(color: AppColors.textPrimaryBase, fontSize: 12),
               ),
               Spacer(flex: 1),
               SvgPicture.asset(
@@ -92,8 +93,8 @@ class ProductCardContainer extends StatelessWidget {
               ),
               Text(
                 deliveryTime,
-                style: CustomResponsiveTextStyles.paragraph4
-                    .copyWith(color: AppColors.textPrimaryBase),
+                style: CustomResponsiveTextStyles.paragraph2
+                    .copyWith(color: AppColors.textPrimaryBase, fontSize: 12),
               ),
               Spacer(flex: 2),
             ],
