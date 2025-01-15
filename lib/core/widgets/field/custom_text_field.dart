@@ -13,6 +13,8 @@ class CustomTextField extends StatefulWidget {
   final String? focusedIcon;
   final BorderRadius? border;
   final TextEditingController? controller;
+  final bool readOnly;
+  final Color? fillColor;
   const CustomTextField({
     Key? key,
     this.onChanged,
@@ -22,6 +24,8 @@ class CustomTextField extends StatefulWidget {
     required this.focusedIcon,
     this.controller,
     this.border,
+    this.readOnly = false,
+    this.fillColor,
   }) : super(key: key);
 
   @override
@@ -48,6 +52,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: widget.readOnly,
       controller: widget.controller,
       onTapOutside: (event) {
         FocusScope.of(context).unfocus();
@@ -59,6 +64,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       textAlignVertical: TextAlignVertical.center, // Align text vertically
       focusNode: _focusNode, // Attach the focus node
       decoration: InputDecoration(
+        fillColor: widget.fillColor ?? Colors.white,
         hintText: widget.hintText,
         hintStyle: CustomTextFieldStyle.hintTextStyle(),
         contentPadding: const EdgeInsets.symmetric(

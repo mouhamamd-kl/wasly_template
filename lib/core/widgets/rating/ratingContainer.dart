@@ -10,7 +10,7 @@ class RatingcontainerLight extends StatelessWidget {
   Color backgroundColor;
   Color foregroundColor;
   double backgroundOpacity;
-
+  EdgeInsetsGeometry? padding;
   RatingcontainerLight({
     super.key,
     required this.rate,
@@ -18,19 +18,23 @@ class RatingcontainerLight extends StatelessWidget {
     this.backgroundColor = AppColors.backgroundLight,
     this.foregroundColor = AppColors.textPrimaryBase,
     this.backgroundOpacity = 1,
+    this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 78,
-      height: 21,
+      padding: padding,
+      // width: 78,
+      // height: 21,
+
       decoration: BoxDecoration(
         color: backgroundColor.withValues(alpha: backgroundOpacity),
         borderRadius: BorderRadius.circular(40),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text("$rate",
               style: CustomResponsiveTextStyles.fieldText3.copyWith(

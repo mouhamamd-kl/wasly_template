@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wasly_template/core/widgets/card/ratingContainer.dart';
+import 'package:wasly_template/core/widgets/rating/ratingContainer.dart';
 import 'package:wasly_template/wasly_template.dart';
 
 class BigProductCardContainer extends StatelessWidget {
