@@ -39,6 +39,10 @@ flutter:
     - assets/images/customer/onBoarding/
     - assets/images/customer/login/    
     - assets/images/icons/
+    - assets/images/icons/bottomNavigationBar/customer/
+    - assets/images/icons/bottomNavigationBar/store/
+    - assets/images/icons/drawer/
+    - assets/images/mockup/
     # - assets/images/customer/onBoarding/
     # - assets/images/store/onBoarding/
     # - images/a_dot_ham.jpeg
