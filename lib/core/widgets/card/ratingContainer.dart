@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:wasly_template/core/styles/custom_color_styles.dart';
 import 'package:wasly_template/core/styles/custom_responsive_text_styles.dart';
-import 'package:wasly_template/helpers/app_constants.dart';
 
 class RatingcontainerLight extends StatelessWidget {
   double rate;
