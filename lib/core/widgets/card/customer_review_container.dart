@@ -3,6 +3,7 @@
 import 'package:animated_size_and_fade/animated_size_and_fade.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pannable_rating_bar/flutter_pannable_rating_bar.dart';
+import 'package:get/get.dart';
 import 'package:wasly_template/wasly_template.dart';
 
 class CustomerReviewContainer extends StatefulWidget {
@@ -48,7 +49,9 @@ class _CustomerReviewContainerState extends State<CustomerReviewContainer> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   image: DecorationImage(
-                    image: AssetImage(widget.userImagePath),
+                    image: widget.userImagePath.isURL
+                        ? NetworkImage(widget.userImagePath)
+                        : AssetImage(widget.userImagePath),
                   ),
                 ),
               ),

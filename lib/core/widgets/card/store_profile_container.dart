@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wasly_template/core/widgets/card/profile_wallpaper.dart';
 import 'package:wasly_template/wasly_template.dart';
 
@@ -69,7 +70,9 @@ class _StoreProfileContainerState extends State<StoreProfileContainer> {
                       height: screenWidth / 3.1,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage(widget.profileImagePath),
+                            image: widget.profileImagePath.isURL
+                                ? NetworkImage(widget.profileImagePath)
+                                : AssetImage(widget.profileImagePath),
                             fit: BoxFit.cover),
                         borderRadius: BorderRadius.circular(100),
                         border: Border.all(

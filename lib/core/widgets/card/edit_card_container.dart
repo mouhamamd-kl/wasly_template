@@ -1,9 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wasly_template/wasly_template.dart';
 
-class EditCardContainer extends StatelessWidget {
+class EditCardContainer extends StatefulWidget {
   String productName;
   String description;
   String imagePath;
@@ -13,6 +14,11 @@ class EditCardContainer extends StatelessWidget {
     required this.imagePath,
   });
 
+  @override
+  State<EditCardContainer> createState() => _EditCardContainerState();
+}
+
+class _EditCardContainerState extends State<EditCardContainer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -27,19 +33,21 @@ class EditCardContainer extends StatelessWidget {
             height: 168,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(imagePath),
+                image: widget.imagePath.isURL
+                    ? NetworkImage(widget.imagePath)
+                    : AssetImage(widget.imagePath),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(10),
             ),
           ),
           Text(
-            productName,
+            widget.productName,
             style: CustomResponsiveTextStyles.headingH8
                 .copyWith(color: AppColors.textPrimaryBase),
           ),
           Text(
-            description,
+            widget.description,
             style: CustomResponsiveTextStyles.paragraph4.copyWith(
               color: AppColors.textSecondaryBase,
             ),

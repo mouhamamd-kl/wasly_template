@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:wasly_template/core/widgets/rating/ratingContainer.dart';
 import 'package:wasly_template/wasly_template.dart';
 
-class ProductCardContainer extends StatelessWidget {
+class ProductCardContainer extends StatefulWidget {
   String imagePath;
   String productName;
   String tags;
@@ -20,6 +21,12 @@ class ProductCardContainer extends StatelessWidget {
     required this.rate,
     required this.numberOfRating,
   });
+
+  @override
+  State<ProductCardContainer> createState() => _ProductCardContainerState();
+}
+
+class _ProductCardContainerState extends State<ProductCardContainer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -42,7 +49,9 @@ class ProductCardContainer extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage(imagePath),
+                      image: widget.imagePath.isURL
+                          ? NetworkImage(widget.imagePath)
+                          : AssetImage(widget.imagePath),
                     ),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -52,8 +61,8 @@ class ProductCardContainer extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: RatingcontainerLight(
                     padding: EdgeInsets.all(8.0),
-                    rate: rate,
-                    numberOfRating: numberOfRating,
+                    rate: widget.rate,
+                    numberOfRating: widget.numberOfRating,
                   ),
                 ),
               ],
@@ -61,13 +70,13 @@ class ProductCardContainer extends StatelessWidget {
           ),
           //Add the name of the product
           Text(
-            productName,
+            widget.productName,
             style: CustomResponsiveTextStyles.headingH6
                 .copyWith(color: AppColors.textPrimaryBase),
           ),
           //Add the tags of the product
           Text(
-            tags,
+            widget.tags,
             style: CustomResponsiveTextStyles.paragraph4.copyWith(
               color: AppColors.textSecondaryBase,
             ),
@@ -92,7 +101,7 @@ class ProductCardContainer extends StatelessWidget {
                 height: 18,
               ),
               Text(
-                deliveryTime,
+                widget.deliveryTime,
                 style: CustomResponsiveTextStyles.paragraph2
                     .copyWith(color: AppColors.textPrimaryBase, fontSize: 12),
               ),

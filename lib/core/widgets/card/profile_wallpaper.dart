@@ -1,11 +1,18 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ProfileWallpaper extends StatelessWidget {
+class ProfileWallpaper extends StatefulWidget {
   String wallpaperImagePath;
 
   ProfileWallpaper({super.key, required this.wallpaperImagePath});
+
+  @override
+  State<ProfileWallpaper> createState() => _ProfileWallpaperState();
+}
+
+class _ProfileWallpaperState extends State<ProfileWallpaper> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -17,7 +24,9 @@ class ProfileWallpaper extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(wallpaperImagePath),
+                  image: widget.wallpaperImagePath.isURL
+                      ? NetworkImage(widget.wallpaperImagePath)
+                      : AssetImage(widget.wallpaperImagePath),
                   fit: BoxFit.cover,
                 ),
               ),
