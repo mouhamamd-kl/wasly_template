@@ -9,95 +9,107 @@ import 'package:wasly_template/core/widgets/text/text_field_3.dart';
 import 'package:wasly_template/helpers/models/phone_model.dart';
 import 'package:wasly_template/wasly_template.dart';
 
-class CustomPhoneField extends StatelessWidget {
-  final GlobalKey<FormState> formKey;
+class CustomPhoneField extends StatefulWidget {
   final TextEditingController phoneNumberController;
+
   const CustomPhoneField({
     super.key,
-    required this.formKey,
     required this.phoneNumberController,
   });
+
+  @override
+  State<CustomPhoneField> createState() => _CustomPhoneFieldState();
+}
+
+class _CustomPhoneFieldState extends State<CustomPhoneField> {
+  late PhoneCode phoneSelected;
+  final List<PhoneCode> phoneCodes = DataConstants.phoneCodes;
+
+  @override
+  void initState() {
+    super.initState();
+    phoneSelected = phoneCodes.first;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<PhoneCode> phoneCodes = DataConstants.phoneCodes;
-    final PhoneCode phoneSelected = phoneCodes.first;
-    return Form(
-      key: formKey,
-      child: Column(
-        children: [
-          DropdownButtonFormField2<PhoneCode>(
-            value: phoneSelected,
-            isExpanded: true,
-            decoration: InputDecoration(
-              label: TextParagraph3(
-                text: "Select Your Country Code",
-              ),
-              errorStyle: CustomTextFieldStyle.errorTextStyle(),
-              errorBorder: CustomOutlineInputBorder.errorBorder(
-                border: CustomBorderRadius.phoneDropDownBorder(),
-              ),
-              focusedErrorBorder: CustomOutlineInputBorder.errorBorder(
-                border: CustomBorderRadius.phoneDropDownBorder(),
-              ),
-              focusedBorder: CustomOutlineInputBorder.focusedBorder(
-                border: CustomBorderRadius.phoneDropDownBorder(),
-              ),
-              border: CustomOutlineInputBorder.defaultBorder(
-                border: CustomBorderRadius.phoneDropDownBorder(),
-              ),
-              enabledBorder: CustomOutlineInputBorder.defaultBorder(
-                border: CustomBorderRadius.phoneDropDownBorder(),
-              ),
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+    return Column(
+      children: [
+        DropdownButtonFormField2<PhoneCode>(
+          value: phoneSelected,
+          isExpanded: true,
+          decoration: InputDecoration(
+            label: TextParagraph3(
+              text: "Select Your Country Code",
             ),
-            items: phoneCodes
-                .map(
-                  (item) => DropdownMenuItem<PhoneCode>(
-                    value: item,
-                    child: PhoneWidget(phoneCode: item),
-                  ),
-                )
-                .toList(),
-            validator: (value) {
-              if (value == null) {
-                return 'Please select a country code.';
-              }
-              return null;
-            },
-            onChanged: (value) {
-              if (value != null) {
-                value = phoneSelected; // Notify parent widget
-              }
-            },
-            buttonStyleData: const ButtonStyleData(
-              padding: EdgeInsets.only(right: 8),
+            errorStyle: CustomTextFieldStyle.errorTextStyle(),
+            errorBorder: CustomOutlineInputBorder.errorBorder(
+              border: CustomBorderRadius.phoneDropDownBorder(),
             ),
-            iconStyleData: const IconStyleData(
-              icon: Icon(
-                Icons.arrow_drop_down,
-                color: Colors.black45,
-              ),
-              iconSize: 24,
+            focusedErrorBorder: CustomOutlineInputBorder.errorBorder(
+              border: CustomBorderRadius.phoneDropDownBorder(),
             ),
-            dropdownStyleData: DropdownStyleData(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-              ),
+            focusedBorder: CustomOutlineInputBorder.focusedBorder(
+              border: CustomBorderRadius.phoneDropDownBorder(),
             ),
-            menuItemStyleData: const MenuItemStyleData(
-              padding: EdgeInsets.symmetric(horizontal: 0),
+            border: CustomOutlineInputBorder.defaultBorder(
+              border: CustomBorderRadius.phoneDropDownBorder(),
+            ),
+            enabledBorder: CustomOutlineInputBorder.defaultBorder(
+              border: CustomBorderRadius.phoneDropDownBorder(),
+            ),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          ),
+          items: phoneCodes
+              .map(
+                (item) => DropdownMenuItem<PhoneCode>(
+                  value: item,
+                  child: PhoneWidget(phoneCode: item),
+                ),
+              )
+              .toList(),
+          validator: (value) {
+            if (value == null) {
+              return 'Please select a country code.';
+            }
+            return null;
+          },
+          onChanged: (value) {
+            if (value != null) {
+              setState(() {
+                phoneSelected = value;
+              });
+            }
+          },
+          buttonStyleData: const ButtonStyleData(
+            padding: EdgeInsets.only(right: 8),
+          ),
+          iconStyleData: const IconStyleData(
+            icon: Icon(
+              Icons.arrow_drop_down,
+              color: Colors.black45,
+            ),
+            iconSize: 24,
+          ),
+          dropdownStyleData: DropdownStyleData(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
             ),
           ),
-          CustomTextField(
-            defaultIcon: null,
-            focusedIcon: null,
-            border: CustomBorderRadius.phonFieldBorder(),
-            hintText: "Phone Number",
-            controller: phoneNumberController,
+          menuItemStyleData: const MenuItemStyleData(
+            padding: EdgeInsets.symmetric(horizontal: 0),
           ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 16),
+        CustomTextField(
+          defaultIcon: null,
+          focusedIcon: null,
+          border: CustomBorderRadius.phonFieldBorder(),
+          hintText: "Phone Number",
+          controller: widget.phoneNumberController,
+        ),
+      ],
     );
   }
 }
