@@ -1,17 +1,16 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wasly_template/wasly_template.dart';
 
 class SmallCardContainer extends StatelessWidget {
   String name;
   String imagePath;
-  String description;
   SmallCardContainer({
     super.key,
     required this.name,
     required this.imagePath,
-    required this.description,
   });
 
   @override
@@ -28,12 +27,19 @@ class SmallCardContainer extends StatelessWidget {
               borderRadius: BorderRadius.circular(
                 50,
               ), // Half of the width for a perfect circle
-              child: Image.asset(
-                imagePath,
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
+              child: imagePath.isURL
+                  ? Image.network(
+                      imagePath,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    )
+                  : Image.asset(
+                      imagePath,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
             ),
           ),
           Positioned(

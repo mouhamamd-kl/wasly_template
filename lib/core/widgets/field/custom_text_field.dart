@@ -15,6 +15,7 @@ class CustomTextField extends StatefulWidget {
   final TextEditingController? controller;
   final bool readOnly;
   final Color? fillColor;
+  final String? Function(String?)? validator;
   const CustomTextField({
     Key? key,
     this.onChanged,
@@ -26,6 +27,7 @@ class CustomTextField extends StatefulWidget {
     this.border,
     this.readOnly = false,
     this.fillColor,
+    this.validator, // Made optional by removing 'required'
   }) : super(key: key);
 
   @override
@@ -33,19 +35,19 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  final FocusNode _focusNode = FocusNode(); // FocusNode to track focus state
+  final FocusNode _focusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
     _focusNode.addListener(() {
-      setState(() {}); // Rebuild widget when focus state changes
+      setState(() {});
     });
   }
 
   @override
   void dispose() {
-    _focusNode.dispose(); // Dispose of the FocusNode
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -60,9 +62,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
       style: CustomTextFieldStyle.defaultTextStyle(),
       onSaved: widget.onSaved,
       onChanged: widget.onChanged,
+      validator: widget.validator,
       textInputAction: TextInputAction.next,
-      textAlignVertical: TextAlignVertical.center, // Align text vertically
-      focusNode: _focusNode, // Attach the focus node
+      textAlignVertical: TextAlignVertical.center,
+      focusNode: _focusNode,
       decoration: InputDecoration(
         fillColor: widget.fillColor ?? Colors.white,
         hintText: widget.hintText,
@@ -76,8 +79,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 padding: const EdgeInsets.only(right: 16.0),
                 child: SvgPicture.asset(
                   _focusNode.hasFocus
-                      ? widget.focusedIcon! // Focused icon
-                      : widget.defaultIcon!, // Default icon
+                      ? widget.focusedIcon!
+                      : widget.defaultIcon!,
                   height: 24,
                   width: 24,
                   fit: BoxFit.scaleDown,
